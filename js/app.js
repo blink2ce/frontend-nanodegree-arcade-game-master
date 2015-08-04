@@ -1,14 +1,14 @@
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(lineHeight) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-    this.x = 10;
-    this.y = 100;
-    this.speed = 2;
+    this.x = 0;
+    this.y = lineHeight;
+    this.speed = 100;
 }
 
 // Update the enemy's position, required method for game
@@ -17,11 +17,10 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.x = this.x + speed * dt;
-    if(this.x ==this.y){
-        player.x = 250;
-        player.y = 540;
-    }
+    this.x = this.x + this.speed * dt;
+    /*if(true){
+        player.x ;
+    }*/
 }
 
 // Draw the enemy on the screen, required method for game
@@ -35,27 +34,49 @@ Enemy.prototype.render = function() {
 
 var playerObject = function(){
     this.hero = 'images/char-boy.png';
-    this.x = 250;
-    this.y = 200;
+    this.x = 205;
+    this.y = 405;
 }
 
 playerObject.prototype.update = function(){
     //Update position based on event listeners
+
 }
 
 playerObject.prototype.render = function() {
     ctx.drawImage(Resources.get(this.hero), this.x, this.y);
 }
 
-playerObject.prototype.handleInput= function(){
-    
+playerObject.prototype.reset = function(){
+    this.x = 205;
+    this.y = 405;
 }
 
+playerObject.prototype.handleInput= function(allowedKeys){
+    if(allowedKeys == 'left'){
+        this.x = this.x - 101;
+    }
+    if(allowedKeys == 'right'){
+        this.x = this.x + 101;
+    }
+    if(allowedKeys == 'down'){
+        this.y = this.y + 83;
+    }
+    if(allowedKeys == 'up'){
+        this.y = this.y - 83;
+    }
+    
+    //Throws TypeError: playerObject.reset is not a function
+    if(this.y < 83){
+        playerObject.reset();
+        alert('Game reset');
+    }
+}
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var allEnemies = [];
+var allEnemies = [new Enemy(60), new Enemy(143), new Enemy(226)];
 var player = new playerObject;
 
 
