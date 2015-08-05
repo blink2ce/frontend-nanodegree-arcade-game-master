@@ -18,10 +18,12 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x = this.x + this.speed * dt;
-    /*if(true){
-        player.x ;
-    }*/
+    if(Math.abs(player.x - this.x) < 15 && Math.abs(player.y - this.y < 15)){
+        player.reset();
+    }
 }
+
+
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
@@ -66,10 +68,8 @@ playerObject.prototype.handleInput= function(allowedKeys){
         this.y = this.y - 83;
     }
     
-    //Throws TypeError: playerObject.reset is not a function
-    if(this.y < 83){
-        playerObject.reset();
-        alert('Game reset');
+    if(this.y < 50){
+        this.reset();
     }
 }
 
