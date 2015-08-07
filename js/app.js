@@ -8,7 +8,7 @@ var Enemy = function(lineHeight) {
     this.sprite = 'images/enemy-bug.png';
     this.x = 0;
     this.y = lineHeight;
-    this.speed = 100;
+    this.speed = Math.random()*500;
 }
 
 // Update the enemy's position, required method for game
@@ -57,19 +57,28 @@ playerObject.prototype.reset = function(){
 playerObject.prototype.handleInput= function(allowedKeys){
     if(allowedKeys == 'left'){
         this.x = this.x - 101;
+        if(this.x < 2){
+            this.x = this.x + 101;
+        }
     }
     if(allowedKeys == 'right'){
         this.x = this.x + 101;
+        if(this.x > 505){
+            this.x = this.x - 101;
+        }
     }
     if(allowedKeys == 'down'){
         this.y = this.y + 83;
+        if(this.y > 475){
+            this.y = this.y - 83;
+        }
     }
     if(allowedKeys == 'up'){
         this.y = this.y - 83;
     }
-    
     if(this.y < 50){
         this.reset();
+        alert("You won!");
     }
 }
 
