@@ -1,6 +1,7 @@
 frontend-nanodegree-arcade-game
 ===============================
 
-Students should use this rubric: https://www.udacity.com/course/viewer#!/c-ud015/l-3072058665/m-3072588797
+HOW TO PLAY:
 
-for self-checking their submission.
+Use the arrow keys on your keyboard (Up, Down, Left, Right) to move the hero character around the board.
+Do not collide with the enemy bugs. The goal is to reach the river. When you reach the river, you will be notified that you have won the game. If you collide with a bug, you will have to start over. Happy playing!
