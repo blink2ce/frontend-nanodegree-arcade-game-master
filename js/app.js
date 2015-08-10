@@ -12,7 +12,7 @@ var Enemy = function() {
     this.y = 40 + Math.random()*200;
     this.speed = Math.random()*100;
 
-}
+};
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -25,12 +25,12 @@ Enemy.prototype.update = function(dt) {
     if(Math.abs(player.x - this.x) < 30 && Math.abs(player.y - this.y < 30)){
         player.reset();
     }
-}
+};
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 // Hero sprite that the player controls
 var playerObject = function() {
@@ -38,24 +38,24 @@ var playerObject = function() {
     //Starting place for hero sprite
     this.x = 205;
     this.y = 405;
-}
+};
 
 playerObject.prototype.update = function(){
-    //Update position based on event listeners
+    //Needed to make Engine.js work -- Included functionality elsewhere in my solution
 
-}
+};
 
 //Draw the hero sprite on the board
 playerObject.prototype.render = function() {
     ctx.drawImage(Resources.get(this.hero), this.x, this.y);
-}
+};
 
 
 //Sends the hero sprite back to the start place, resetting the game
 playerObject.prototype.reset = function() {
     this.x = 205;
     this.y = 405;
-}
+};
 
 playerObject.prototype.handleInput= function(allowedKeys) {
     //If the Left arrow key is pressed, move the hero sprite to the next tile to the left
@@ -86,7 +86,7 @@ playerObject.prototype.handleInput= function(allowedKeys) {
         this.reset();
         alert("You won!");
     }
-}
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
@@ -94,7 +94,7 @@ playerObject.prototype.handleInput= function(allowedKeys) {
 var allEnemies = [];
 
 //Create 50 enemies
-for(var i = 0; i < 50; i++) { 
+for(var i = 0; i < 50; i++) {
     allEnemies.push(new Enemy());
 }
 
